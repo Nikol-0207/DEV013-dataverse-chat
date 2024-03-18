@@ -1,6 +1,3 @@
-import { Home } from "./views/Home.js";
-import { About } from "./views/About.js";
-import { NotFound } from "./views/NotFound.js";
 
 let $root;
 const ROUTES = {};
