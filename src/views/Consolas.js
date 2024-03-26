@@ -1,9 +1,8 @@
  /* import data from './data/dataset.js'; */
 /* import {filterData,sortData,computeStats} from "./dataFunctions.js"; */
 
-export const consolas =()=> {
-
-      const element = document.createElement('html');
+export function Consolas (props) {
+      const element = document.createElement('div');
       element.classList.add('home-container');
       element.innerHTML = /*html*/ `
        <header>

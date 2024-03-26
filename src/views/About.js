@@ -1,5 +1,5 @@
-export const about=()=> {
-      const element = document.createElement('html');
+export function About (props) {
+      const element = document.createElement('div');
       element.classList.add('home-container');
      element.innerHTML = /*html*/ `
       <body>

@@ -1,5 +1,5 @@
-export const Home= ()=> {
-      const element = document.createElement('html');
+export function Home (props) {
+      const element = document.createElement('div');
       element.classList.add('home-container');
       element.innerHTML = /*html*/ `
       <h1>Home</h1>
