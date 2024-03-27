@@ -1,12 +1,12 @@
 export function About (props) {
       const element = document.createElement('div');
       element.classList.add('home-container');
-
+      console.log(props)
 
       element.innerHTML = /*html*/ `
             <section class="chat">
             <header class="chat__header">
-                  Consola TV
+                  ${props.name}
             </header>
             <main class="chat__main">
             <article class="message message--incoming">
