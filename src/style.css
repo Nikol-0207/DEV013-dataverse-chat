@@ -5,7 +5,7 @@
 /*Home*/
 .mitad-body{
   margin: 0;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -240,36 +240,3 @@ select[name="type-order"] {
   background-position: center;
 
 }
-/* not-found */
-.text-error{
-  color: #7B6E6E;
-}
-.text-baloon{
-  text-align: justify;
-  box-shadow: 10px 10px 4px rgba(22, 21, 21, 0.2) ;
-  border-radius: 20px;
-   height:  189px;
-   width: 504px;
-   border-color: black solid;
-   background: #ffff;
-   font-size: 30px;
-   margin-left: 50%;
-   color: #7B6E6E;
-   font-family: "Oswald", sans-serif;
-   padding: 10px 20px 10px 20px;
-}
-.img-content {
-  position: relative;
-}
-img{
-  height: 61em;
-}
-.img-content img {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 0;
-  margin-top: -310px;
-}
-
-/* not-found */
