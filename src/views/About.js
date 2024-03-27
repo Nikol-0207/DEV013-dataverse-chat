@@ -14,7 +14,7 @@ export function About (props) {
                         <img class="message__image" src="https://cdn-icons-png.freepik.com/256/10302/10302971.png" />
                   </picture>
                   <div class="message__text">
-                        Message text
+                        mensaje
                   </div>
             </article>
             <article class="message message--outgoing">
@@ -22,7 +22,7 @@ export function About (props) {
                         <img class="message__image" src="https://cdn-icons-png.freepik.com/256/10302/10302971.png" />
                   </picture>
                   <div class="message__text">
-                        Message text
+                  mensaje mio
                   </div>
             </article>
             </main>
@@ -57,7 +57,7 @@ export function About (props) {
             }
 
             .chat__main {
-                  background: #E80414;
+                  background: rgb(133, 19, 19);
                   padding-inline: 1rem;
                   backdrop-filter: brightness(0.5);
                   background-blend-mode: overlay;
