@@ -11,7 +11,7 @@ export function About (props) {
             <main class="chat__main">
             <article class="message message--incoming">
                   <picture class="message__picture">
-                        <img class="message__image" src="https://cdn-icons-png.freepik.com/256/10302/10302971.png" />
+                        <img class="message__image" src="${props.imageUrl}" />
                   </picture>
                   <div class="message__text">
                         mensaje
