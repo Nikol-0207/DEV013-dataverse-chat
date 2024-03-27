@@ -5,12 +5,14 @@ import { Home } from "./views/Home.js";
 import { Consolas } from "./views/Consolas.js";
 import { About } from "./views/About.js";
 import { NotFound } from "./views/NotFound.js";
+import { ChatGroup } from "./views/ChatGroup.js";
 import { setRoot,onURLChange,setRoutes } from "./router.js";
 const routes = {
     "/": Home,
     "/about": About,
     "/consolas": Consolas,
     "/not-found": NotFound,
+    "/chat-group": ChatGroup,
 };
 setRoutes(routes);
 /* function HandleAnchorClick(event){
