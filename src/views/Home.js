@@ -1,6 +1,12 @@
 import data from '../data/dataset.js';
 import {filterData,sortData,computeStats} from "../lib/dataFunctions.js";
 
+function mandaItem(item) {
+      return Object.entries(item)
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+        .join('&');
+}
+
 
 export const renderItems = (data) => {
   const $contenedorTarjetas = document.createElement("ul");
@@ -42,6 +48,8 @@ export const renderItems = (data) => {
                 </dl>
                 </main>
             <footer class="card-front__footer">
+            <button  class="card-front__chat " type="button" name="button" data-href="${`/about?${mandaItem(item)}`}">Chat</button >
+            
             <figure onclick="(${toggleContent
               .toString()
               .replace(/"/g, "'")}).call(this)" data-id="li-${
