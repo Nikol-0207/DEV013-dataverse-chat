@@ -12,7 +12,7 @@ export const setRoot = ($node) => {
 
 /**
  * @description This function set ROUTES object
- * @param {{[path: string]:  (props: {[property: string]: string}) => DocumentFragment}} routes 
+ * @param {{[path: string]:  (props: {[property: string]: string}) => DocumentFragment}} routes
  */
 export const setRoutes = (routes) => {
   if (typeof routes !== "object") throw new Error("Routes isn't an object");
@@ -27,8 +27,8 @@ export const setRoutes = (routes) => {
 };
 
 /**
- * @description obtain the properties from the url query 
- * @param {string} query represet the url query from window.location the url storage the information for the current view 
+ * @description obtain the properties from the url query
+ * @param {string} query represet the url query from window.location the url storage the information for the current view
  * @returns {{[property: string]: string}} Represent properties to send to specific view
  */
 const queryStringToObject = (query) => {
@@ -58,7 +58,7 @@ const renderView = (pathname, props = {}) => {
 };
 
 /**
- * 
+ *
  * @param {String} pathname Represent pathname of the window.location, the current ubication of the user
  * @param {{[property: string]: string}} props Represent properties to send to specific view
  */
@@ -72,8 +72,8 @@ export const navigateTo = (pathname, props = {}) => {
 };
 
 /**
- * 
- * @param {Location} location 
+ *
+ * @param {Location} location
  */
 export const onURLChange = (location) => {
   const search = location.search ?? "";

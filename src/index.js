@@ -1,19 +1,52 @@
 // En este archivo definirás tus rutas e importarás los componentes que vas a renderizar.
-
-/*
-import Example from './views/Example.js';
-
-Ejemplo de definición de rutas:
-
+/* import data from "./Data/dataset.js"; */
+/* import {filterData,sortData,computeStats} from "./lib/dataFunctions.js"; */
+import { Home } from "./views/Home.js";
+import { Consolas } from "./views/Consolas.js";
+import { About } from "./views/About.js";
+import { NotFound } from "./views/NotFound.js";
+import { setRoot,onURLChange,setRoutes } from "./router.js";
 const routes = {
-    "/": Example,
-    ...
-}
-*/
+    "/": Home,
+    "/about": About,
+    "/consolas": Consolas,
+    "/not-found": NotFound,
+};
+setRoutes(routes);
+/* function HandleAnchorClick(event){
+  const anchor = event.target.closest("a");
 
-/*
-TODO:
-1.- Definir rutas en router.
-2.- Pasar "root element" a router.
-3.- Invocar el router para renderizar la vista correcta.
-*/
+    if (anchor){
+     const href = anchor.getAttribute("href");
+     const url = new URL(href, window.location.origin);
+     const pathname = url.pathname;
+     const searchParams = url.searchParams.toString();
+     const search =searchParams ? `?${searchParams}` : "";
+     const newLocation = {pathname,search};
+     onURLChange(newLocation);
+    }
+
+  } */
+// Set the root element where views will be rendered
+window.addEventListener("DOMContentLoaded", () => {
+  const $root = document.getElementById('root');
+  setRoot($root);
+  // Maneja el cambio de URL para renderizar la vista correspondiente
+  window.addEventListener('popstate', () => {
+    onURLChange(window.location);
+  });
+  // Renderiza la vista inicial basada en la URL actual
+  onURLChange(window.location);
+  document.querySelectorAll("a").forEach((anchor) =>{
+    anchor.addEventListener("click", HandleAnchorClick);
+ });
+});
+
+
+
+
+
+
+
+
+
