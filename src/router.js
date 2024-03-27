@@ -1,5 +1,8 @@
 
 let $root;
+/**
+ * @type {{[path: string]:  (props: {[property: string]: string}) => HTMLElement}}
+ */
 const ROUTES = {};
 
 /**
@@ -12,7 +15,7 @@ export const setRoot = ($node) => {
 
 /**
  * @description This function set ROUTES object
- * @param {{[path: string]:  (props: {[property: string]: string}) => DocumentFragment}} routes
+ * @param {{[path: string]:  (props: {[property: string]: string}) => HTMLElement}} routes
  */
 export const setRoutes = (routes) => {
   if (typeof routes !== "object") throw new Error("Routes isn't an object");
@@ -55,6 +58,7 @@ const renderView = (pathname, props = {}) => {
   const View = ROUTES[pathname] ?? ROUTES["/not-found"];
   const $view = View(props);
   $root.appendChild($view);
+  $view.dispatchEvent(new Event("load"));
 };
 
 /**
@@ -80,4 +84,5 @@ export const onURLChange = (location) => {
   const props = queryStringToObject(search);
   const pathname = location.pathname || "/";
   navigateTo(pathname, props);
+  
 };
