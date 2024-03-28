@@ -45,7 +45,7 @@ export function About (props) {
                   border-radius: 1rem;
                   overflow: hidden;
             }
-            
+
             .chat__header {
                   font-weight: 900;
                   background: #DFDADA;
@@ -61,11 +61,13 @@ export function About (props) {
                   padding-inline: 1rem;
                   backdrop-filter: brightness(0.5);
                   background-blend-mode: overlay;
-                  background-size: 80px;
-                  /*background-image: url(https://cdn.iconscout.com/icon/free/png-256/free-star-3661048-3095468.png);
-                  */
+
+                  background-image: url(https://cdn.iconscout.com/icon/free/png-256/free-star-3661048-3095468.png);
+
+                  background-size: auto;
                   display: flex;
                   flex-direction: column;
+                  position: absolute;
             }
 
             .message {
@@ -75,7 +77,7 @@ export function About (props) {
             .message--outgoing {
                   direction: rtl;
             }
-            
+
             .message--outgoing .message__text{
                   direction: ltr;
             }
@@ -95,7 +97,7 @@ export function About (props) {
             }
 
             .chat__footer {
-                  
+
                   background: #DFDADA;
                   position: unset;
                   padding-inline: 1rem;
@@ -111,7 +113,7 @@ export function About (props) {
                   font-size: 1.3rem;
             }
 
-            .chat__button { 
+            .chat__button {
                   margin-block: .5rem;
                   width: 3rem;
                   font-size: 1.3rem;
