@@ -5,7 +5,7 @@ let $root;
  */
 const ROUTES = {};
 
-/**
+/** 
  * @description This function set root element
  * @param {HTMLElement} $node Represent the root element for the content inside itself
  */

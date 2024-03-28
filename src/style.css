@@ -846,10 +846,13 @@ select[name="type-order"] {
 
 .card-front__chat {
   position: absolute;
-  left: 0px;
-  bottom: -8rem;
+  left: -80px;
+  bottom: -200px;
   display: inline-block;
-  padding: 10px 20px;
+  height: 200px;
+  width: 250px;
+  padding-inline-start: 3rem;
+  padding-block-end: 3rem;
   font-weight: bold;
   color: white;
   background-color: #000;
@@ -858,12 +861,18 @@ select[name="type-order"] {
   text-decoration: none;
   cursor: pointer;
   transition: all 3ms;
+  mask-image: url(https://static.vecteezy.com/system/resources/thumbnails/011/720/958/small/white-empty-speech-bubble-free-png.png);
+  mask-size: 100% 100%;
+  font-family: "Silkscreen", sans-serif;
+  font-size: 3rem;
+  transform: scale(.6);
+  transition: all 200ms;
 }
 
+
 .card-front__chat:hover {
-  background-color: transparent;
-  border-color: #000;
-  color: #000;
+  
+  transform: scale(1);
 }
 
 .card-front__chat:focus {
