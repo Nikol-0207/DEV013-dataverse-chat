@@ -43,10 +43,19 @@ function addEventsRouter() {
 }
 // Set the root element where views will be rendered
 window.addEventListener("DOMContentLoaded", () => {
-  const $iconos = document.querySelector("#iconos");
 
+ const $iconos = document.querySelector("#iconos");
 
-  $iconos.appendChild(renderBackground());
+  const currenthPath= window.location.pathname;
+  const homePath = "/";
+  const isHomePage = currenthPath===homePath;
+  if (isHomePage){
+    $iconos.appendChild(renderBackground());
+  }else{
+    while ($iconos.firstChild) {
+      $iconos.removeChild($iconos.firstChild);
+    }
+  }
 
   const $root = document.getElementById("root");
   setRoot($root);

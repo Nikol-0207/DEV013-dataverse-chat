@@ -37,12 +37,13 @@ export function About(props) {
                   ${props.name}
             </header>
             <main class="chat__main" id="chat__main">
-
-
             </main>
             <footer class="chat__footer">
-                  <input type="text" class="chat__input" id="entrada" />
+                  <input type="text" class="chat__input" id="entrada" placeholder="Type a message..." />
                   <button type="button" class="chat__button" id="envio"></button>
+                  <div class="footer-copy">
+                  &copy; By Karen Mora and Wendy Nicol
+                  </div>
             </footer>
       </section>
       <style>
@@ -71,16 +72,13 @@ export function About(props) {
             }
 
             .chat__main {
-                  background: rgb(133, 19, 19);
+                  background: #e70012;
+                  background-image: url("../img/star (1).png");
+                  background-size:auto;
                   padding-inline: 1rem;
                   backdrop-filter: brightness(0.5);
-                  background-blend-mode: overlay;
-                  background-size: 80px;
-                  /*background-image: url(https://cdn.iconscout.com/icon/free/png-256/free-star-3661048-3095468.png);
-                  */
                   display: flex;
                   flex-direction: column;
-                  position: absolute;
             }
 
             .message {
@@ -104,7 +102,9 @@ export function About(props) {
 
             }
 
-            .message__picture {}
+            .message__picture {
+
+            }
 
             .message__image {
                   width: 40px;
@@ -124,8 +124,6 @@ export function About(props) {
             }
 
             .chat__footer {
-
-                  background: #DFDADA;
                   position: unset;
                   padding-inline: 1rem;
                   display: flex;
@@ -171,11 +169,12 @@ export function About(props) {
       </style>
       `;
 
+
       element.addEventListener("load", () => {
             const $envio = element.querySelector("#envio");
             const $entrada = element.querySelector("#entrada");
             const $chatMain = element.querySelector("#chat__main");
-
+            
             $envio.addEventListener("click", () => {
                   const mensaje = $entrada.value;
 
