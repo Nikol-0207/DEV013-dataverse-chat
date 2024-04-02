@@ -37,12 +37,13 @@ export function About(props) {
                   ${props.name}
             </header>
             <main class="chat__main" id="chat__main">
-            
-            
             </main>
             <footer class="chat__footer">
-                  <input type="text" class="chat__input" id="entrada" />
+                  <input type="text" class="chat__input" id="entrada" placeholder="Type a message..." />
                   <button type="button" class="chat__button" id="envio"></button>
+                  <div class="footer-copy">
+                  &copy; By Karen Mora and Wendy Nicol
+                  </div>
             </footer>
       </section>
       <style>
@@ -59,7 +60,7 @@ export function About(props) {
                   border-radius: 1rem;
                   overflow: hidden;
             }
-            
+
             .chat__header {
                   font-weight: 900;
                   display: flex;
@@ -71,7 +72,9 @@ export function About(props) {
             }
 
             .chat__main {
-                  background: rgb(133, 19, 19);
+                  background: #e70012;
+                  background-image: url("../img/star (1).png");
+                  background-size:auto;
                   padding-inline: 1rem;
                   backdrop-filter: brightness(0.5);
                   display: flex;
@@ -88,18 +91,20 @@ export function About(props) {
             .message--outgoing {
                   direction: rtl;
             }
-            
+
             .message--outgoing .message__text{
                   direction: ltr;
-                  
+
                   border-radius: 1rem 1rem 0rem 1rem;
             }
             .message--outgoing .message__image {
                   transform: translateX(50%);
-                  
+
             }
 
-            .message__picture {}
+            .message__picture {
+
+            }
 
             .message__image {
                   width: 40px;
@@ -137,11 +142,11 @@ export function About(props) {
                   border: unset;
                   outline: unset;
             }
-            
+
             .chat__input:focus {
                   border: unset;
             }
-            
+
             .chat__button {
                   margin-block: .5rem;
                   border-radius: 1rem;
@@ -164,16 +169,17 @@ export function About(props) {
       </style>
       `;
 
+
       element.addEventListener("load", () => {
             const $envio = element.querySelector("#envio");
             const $entrada = element.querySelector("#entrada");
             const $chatMain = element.querySelector("#chat__main");
-
+            
             $envio.addEventListener("click", () => {
                   const mensaje = $entrada.value;
 
                   if (mensaje.trim().length === 0) return;
-                  
+
                   $chatMain.innerHTML += MensageEnviado({
                         mensaje
                   });

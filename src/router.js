@@ -1,11 +1,10 @@
-
 let $root;
 /**
  * @type {{[path: string]:  (props: {[property: string]: string}) => HTMLElement}}
  */
 const ROUTES = {};
 
-/** 
+/**
  * @description This function set root element
  * @param {HTMLElement} $node Represent the root element for the content inside itself
  */
@@ -84,5 +83,6 @@ export const onURLChange = (location) => {
   const props = queryStringToObject(search);
   const pathname = location.pathname || "/";
   navigateTo(pathname, props);
-  
+
+
 };

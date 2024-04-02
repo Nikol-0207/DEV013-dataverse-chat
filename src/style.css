@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 
-.home-container body {
-  background-color: aquamarine;
-  margin: 0;
-}
+
 .container-ingress{
   background: black;
   height: 404px;
@@ -21,8 +19,10 @@
   width: 250px;
   height: 64px;
 }
-footer{
-  position: fixed;
+.footer-copy{
+  position:fixed;
+  padding: 20px 0;
+  margin-left: 10px;
   bottom: 0;
   width: 100%;
 }
@@ -846,11 +846,12 @@ select[name="type-order"] {
 
 .card-front__chat {
   position: absolute;
+  overflow:visible;
   left: -80px;
   bottom: -200px;
   display: inline-block;
   height: 200px;
-  width: 250px;
+  width: 200px;
   padding-inline-start: 3rem;
   padding-block-end: 3rem;
   font-weight: bold;
@@ -861,17 +862,24 @@ select[name="type-order"] {
   text-decoration: none;
   cursor: pointer;
   transition: all 3ms;
-  mask-image: url(https://static.vecteezy.com/system/resources/thumbnails/011/720/958/small/white-empty-speech-bubble-free-png.png);
+  mask-image: url("./img/burbuja.png");
   mask-size: 100% 100%;
   font-family: "Silkscreen", sans-serif;
   font-size: 3rem;
   transform: scale(.6);
   transition: all 200ms;
 }
+.image-chatButton{
+  height: 3em;
+  position: absolute;
+  top: -5px; /* Mueve la imagen hacia arriba */
+  left: -5px; /* Mueve la imagen hacia la izquierda */
+  z-index: 2;
+}
 
 
 .card-front__chat:hover {
-  
+
   transform: scale(1);
 }
 
