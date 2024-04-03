@@ -1,5 +1,3 @@
-
-
 export const getApiKey = () => {
     return localStorage.getItem("apikey");
 };
