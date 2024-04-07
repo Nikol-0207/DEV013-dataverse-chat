@@ -10,7 +10,12 @@
     },
     "extends": "eslint:recommended",
     "plugins": ["import"],
+
     "rules": {
+      "import/no-unresolved": "error",
+      "import/named": "error",
+      "import/default": "error",
+      "import/namespace": "error",
       "no-console": "warn",
       "import/extensions": 0,
       "no-var": "error",

@@ -28,7 +28,14 @@ const MensageLLegada = (props) => {
 export function About(props) {
       const element = document.createElement('div');
       element.classList.add('home-container');
-      console.log(props)
+     
+      const valores = Object.values(props);
+
+      if (valores.length == 0){
+            location.href = "/"
+      }
+      
+
 
 
 

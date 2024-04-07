@@ -1,9 +1,10 @@
-import { sortData,filterData,computeStats} from '../src/lib/dataFunctions.js';
-import { data as fakeData } from '../src/data/dataset.js';
+import { sortData,filterData,computeStats} from '../lib/dataFunctions.js';
+import fakeData  from '../data/dataset.js';
 
 const dataInitial = [...fakeData];
 describe('sortData', () => {
-  it('sorts data alfabeticamente en orden ascendete', () => {
+
+    it('sorts data alfabeticamente en orden ascendete', () => {
     const sortedData = sortData(fakeData, 'name', 'asc');
     const firstItem = sortedData[0];
     const lastItem = sortedData[sortedData.length - 1];
@@ -19,6 +20,7 @@ describe('sortData', () => {
     expect(lastItem.name).toBe('Color TV Game');
   });
 });
+
 describe('filterData', () => {
   it('filtrar por número de generación', () => {
     const filteredData = filterData(fakeData, 'select', '4');
@@ -41,6 +43,7 @@ describe('filterData', () => {
 describe('computeStats', () => {
   it('Calcular total de precios por generación', () => {
     const stats = computeStats(fakeData);
+    
     expect(stats['primerageneración']).toBe(199);
     expect(stats['segundageneración']).toBe(40);
   });

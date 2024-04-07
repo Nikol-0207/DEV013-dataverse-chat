@@ -1,6 +1,5 @@
 import { getApiKey } from './apiKey.js';
 
-
 export const communicateWithOpenAI = (messages) => {
 
     const requestOptions = {
