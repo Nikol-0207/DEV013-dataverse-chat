@@ -5,7 +5,7 @@ export function Panel(props) {
             <h1>Home</h1>
             <p>Bienvenido a la página principal</p>
             <div class="container-ingress">
-                  <button  class="ingress-button" type="button" name="button" data-href="/about">Ingresar</button >
+                  <button  class="ingress-button" type="button" name="button" >Ingresar</button >
             </div>
       `;
 
