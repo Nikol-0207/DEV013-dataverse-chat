@@ -89,5 +89,11 @@ export function NotFound(props) {
       </style>
       `;
   document.body.style.backgroundColor = "#9CECD4";
+    element.addEventListener("load", ()=> {
+        const buttonKirby = document.querySelector(".kirby-button");
+        buttonKirby.addEventListener("click", ()=>{
+           window.location.href= "/";
+        });
+    });
   return element;
 }

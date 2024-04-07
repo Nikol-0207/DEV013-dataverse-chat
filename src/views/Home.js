@@ -148,6 +148,8 @@ export function Home(props) {
           <button id="reset" data-testid="button-clear">
             <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
+
+          <button >ApiKey</button>
         </div>
         <div class="select">
           <label class= "label-hiden" for ="mySelect"></label>

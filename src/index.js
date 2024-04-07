@@ -5,6 +5,7 @@ import { Home } from "./views/Home.js";
 import { Panel } from "./views/Panel.js";
 import { About } from "./views/About.js";
 import { NotFound } from "./views/NotFound.js";
+import { apiView } from "./views/ApiView.js";
 import { setRoot, onURLChange, setRoutes } from "./router.js";
 import { renderBackground } from "./components/renderBackground.js";
 
@@ -13,6 +14,7 @@ const routes = {
   "/about": About,
   "/panel": Panel,
   "/not-found": NotFound,
+  "/apiview": apiView,
 };
 
 setRoutes(routes);

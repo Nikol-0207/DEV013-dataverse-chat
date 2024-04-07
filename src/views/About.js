@@ -1,35 +1,38 @@
 import { communicateWithOpenAI } from "../lib/openAIApi.js";
 
+const MensageEnviado = (props) => {
+  return /*html*/ `
+  <article class="message message--outgoing">
+        <picture class="message__picture">
+              <img class="message__image" src="https://cdn-icons-png.freepik.com/256/10302/10302971.png" />
+        </picture>
+        <div class="message__text">
+        ${props.mensaje}
+        </div>
+  </article>
+  `
+}
+const MensageLLegada = (props) => {
+  return /*html*/ `
+  <article class="message message--incoming">
+        <picture class="message__picture">
+              <img class="message__image" src="${props.imageUrl}" />
+        </picture>
+        <div class="message__text">
+        ${props.mensaje}
+        </div>
+  </article>
+  `
+}
+
 export function About(props) {
       const element = document.createElement('div');
       element.classList.add('home-container');
       console.log(props)
 
-      const MensageEnviado = (props) => {
-            return `
-            <article class="message message--outgoing">
-                  <picture class="message__picture">
-                        <img class="message__image" src="https://cdn-icons-png.freepik.com/256/10302/10302971.png" />
-                  </picture>
-                  <div class="message__text">
-                  ${props.mensaje}
-                  </div>
-            </article>
-            `
-      }
 
-      const MensageLLegada = (props) => {
-            return `
-            <article class="message message--incoming">
-                  <picture class="message__picture">
-                        <img class="message__image" src="${props.imageUrl}" />
-                  </picture>
-                  <div class="message__text">
-                  ${props.mensaje}
-                  </div>
-            </article>
-            `
-      }
+
+
 
       element.innerHTML = /*html*/ `
             <section class="chat">
@@ -79,6 +82,7 @@ export function About(props) {
                   backdrop-filter: brightness(0.5);
                   display: flex;
                   flex-direction: column;
+                  overflow:auto;
             }
 
             .message {
@@ -174,7 +178,43 @@ export function About(props) {
             const $envio = element.querySelector("#envio");
             const $entrada = element.querySelector("#entrada");
             const $chatMain = element.querySelector("#chat__main");
-            
+            $entrada.addEventListener("keypress",(event) =>{
+              if (event.key==='Enter'){
+                  const mensaje = $entrada.value;
+
+                  if (mensaje.trim().length === 0) return;
+
+                  $chatMain.innerHTML += MensageEnviado({
+                        mensaje
+                  });
+
+                  communicateWithOpenAI([
+                        {
+                              "role": "system",
+                              "content": `Eres la consola de Videojuegos ${props.name}`
+                        },
+                        {
+                              "role": "assistant",
+                              "content": props.description
+                            },
+                        {
+                              "role": "user",
+                              "content": mensaje
+                        }
+
+                  ]).then((data) => {
+                        if (!data.choices.at(0).message.content) return;
+
+                        $chatMain.innerHTML += MensageLLegada({
+                              mensaje: data.choices.at(0).message.content,
+                              imageUrl: props.imageUrl
+                        })
+                  });
+
+                  $entrada.value = "";
+              }
+
+            })
             $envio.addEventListener("click", () => {
                   const mensaje = $entrada.value;
 
@@ -197,6 +237,7 @@ export function About(props) {
                               "role": "user",
                               "content": mensaje
                         }
+
                   ]).then((data) => {
                         if (!data.choices.at(0).message.content) return;
 
