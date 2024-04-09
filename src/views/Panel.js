@@ -1,9 +1,9 @@
 export function Panel(props) {
-      const element = document.createElement('div');
-      element.classList.add('home-container');
-      console.log(props)
+  const element = document.createElement("div");
+  element.classList.add("home-container");
+  console.log(props);
 
-      element.innerHTML = /*html*/ `
+  element.innerHTML = /*html*/ `
             <section class="chat">
             <header class="chat__header">
                   Grupal
@@ -122,16 +122,10 @@ export function Panel(props) {
       </style>
       `;
 
+  element.addEventListener("load", () => {
+    /* const $texto = document.querySelector("#textoEnviar");
+    const $boton = document.querySelector("#botonEnviar"); */
+  });
 
-      element.addEventListener("load", () => {
-
-            const $texto = document.querySelector("#textoEnviar");
-            const $boton = document.querySelector("#botonEnviar");
-
-
-            console.log($boton, $texto);
-
-      })
-
-      return element;
+  return element;
 }

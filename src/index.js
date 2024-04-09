@@ -3,18 +3,20 @@
 /* import {filterData,sortData,computeStats} from "./lib/dataFunctions.js"; */
 import { Home } from "./views/Home.js";
 import { Panel } from "./views/Panel.js";
-import { About } from "./views/About.js";
+
 import { NotFound } from "./views/NotFound.js";
-import { apiView } from "./views/ApiView.js";
 import { setRoot, onURLChange, setRoutes } from "./router.js";
 import { renderBackground } from "./components/renderBackground.js";
+import { apiView } from "./views/apiView.js";
+import { Consola } from "./views/Consola.js";
 
 const routes = {
   "/": Home,
-  "/about": About,
+  "/consola": Consola,
   "/panel": Panel,
   "/not-found": NotFound,
   "/apiview": apiView,
+  "/about-game-watch": Consola,
 };
 
 setRoutes(routes);
@@ -45,22 +47,20 @@ function addEventsRouter() {
 }
 // Set the root element where views will be rendered
 window.addEventListener("DOMContentLoaded", () => {
-
- const $iconos = document.querySelector("#iconos");
-
-  const currenthPath= window.location.pathname;
+  const $iconos = document.querySelector("#iconos");
+  const $root = document.getElementById("root");
+  setRoot($root);
+  const currenthPath = window.location.pathname;
   const homePath = "/";
-  const isHomePage = currenthPath===homePath;
-  if (isHomePage){
+  const isHomePage = currenthPath === homePath;
+  if (isHomePage) {
     $iconos.appendChild(renderBackground());
-  }else{
+  } else {
     while ($iconos.firstChild) {
       $iconos.removeChild($iconos.firstChild);
     }
   }
 
-  const $root = document.getElementById("root");
-  setRoot($root);
   // Maneja el cambio de URL para renderizar la vista correspondiente
   window.addEventListener("popstate", () => {
     onURLChange(window.location);

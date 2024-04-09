@@ -10,8 +10,8 @@ const MensageEnviado = (props) => {
         ${props.mensaje}
         </div>
   </article>
-  `
-}
+  `;
+};
 const MensageLLegada = (props) => {
   return /*html*/ `
   <article class="message message--incoming">
@@ -22,26 +22,23 @@ const MensageLLegada = (props) => {
         ${props.mensaje}
         </div>
   </article>
-  `
-}
+  `;
+};
 
-export function About(props) {
-      const element = document.createElement('div');
-      element.classList.add('home-container');
-     
-      const valores = Object.values(props);
+export function Consola(props) {
+  const element = document.createElement("div");
+  element.classList.add("home-container");
 
-      if (valores.length == 0){
-            location.href = "/"
-      }
-      
+  const valores = Object.values(props);
 
+  if (valores.length === 0) {
+    location.href = "/";
+  }
 
-
-
-
-
-      element.innerHTML = /*html*/ `
+  element.innerHTML = /*html*/ `
+          <article class="barra-home">
+      <button class="start"><i class="fa-solid fa-house"></i>Inicio</button>
+          </article>
             <section class="chat">
             <header class="chat__header">
                   ${props.name}
@@ -51,11 +48,12 @@ export function About(props) {
             <footer class="chat__footer">
                   <input type="text" class="chat__input" id="entrada" placeholder="Type a message..." />
                   <button type="button" class="chat__button" id="envio"></button>
-                  <div class="footer-copy">
-                  &copy; By Karen Mora and Wendy Nicol
-                  </div>
+
             </footer>
       </section>
+      <div class="footer-copy">
+                  &copy; By Karen Mora and Wendy Nicol
+                  </div>
       <style>
             .chat {
                   z-index: 10;
@@ -180,84 +178,83 @@ export function About(props) {
       </style>
       `;
 
+  element.addEventListener("load", () => {
+    const $envio = element.querySelector("#envio");
+    const $entrada = element.querySelector("#entrada");
+    const $chatMain = element.querySelector("#chat__main");
+    const buttonStart = document.querySelector(".start");
+    buttonStart.addEventListener("click", () => {
+      window.location.href = "/";
+    });
+    $entrada.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        const mensaje = $entrada.value;
 
-      element.addEventListener("load", () => {
-            const $envio = element.querySelector("#envio");
-            const $entrada = element.querySelector("#entrada");
-            const $chatMain = element.querySelector("#chat__main");
-            $entrada.addEventListener("keypress",(event) =>{
-              if (event.key==='Enter'){
-                  const mensaje = $entrada.value;
+        if (mensaje.trim().length === 0) return;
 
-                  if (mensaje.trim().length === 0) return;
+        $chatMain.innerHTML += MensageEnviado({
+          mensaje,
+        });
 
-                  $chatMain.innerHTML += MensageEnviado({
-                        mensaje
-                  });
+        communicateWithOpenAI([
+          {
+            role: "system",
+            content: `Eres la consola de Videojuegos ${props.name}`,
+          },
+          {
+            role: "assistant",
+            content: props.description,
+          },
+          {
+            role: "user",
+            content: mensaje,
+          },
+        ]).then((data) => {
+          if (!data.choices.at(0).message.content) return;
 
-                  communicateWithOpenAI([
-                        {
-                              "role": "system",
-                              "content": `Eres la consola de Videojuegos ${props.name}`
-                        },
-                        {
-                              "role": "assistant",
-                              "content": props.description
-                            },
-                        {
-                              "role": "user",
-                              "content": mensaje
-                        }
+          $chatMain.innerHTML += MensageLLegada({
+            mensaje: data.choices.at(0).message.content,
+            imageUrl: props.imageUrl,
+          });
+        });
 
-                  ]).then((data) => {
-                        if (!data.choices.at(0).message.content) return;
+        $entrada.value = "";
+      }
+    });
+    $envio.addEventListener("click", () => {
+      const mensaje = $entrada.value;
 
-                        $chatMain.innerHTML += MensageLLegada({
-                              mensaje: data.choices.at(0).message.content,
-                              imageUrl: props.imageUrl
-                        })
-                  });
+      if (mensaje.trim().length === 0) return;
 
-                  $entrada.value = "";
-              }
-
-            })
-            $envio.addEventListener("click", () => {
-                  const mensaje = $entrada.value;
-
-                  if (mensaje.trim().length === 0) return;
-
-                  $chatMain.innerHTML += MensageEnviado({
-                        mensaje
-                  });
-
-                  communicateWithOpenAI([
-                        {
-                              "role": "system",
-                              "content": `Eres la consola de Videojuegos ${props.name}`
-                        },
-                        {
-                              "role": "assistant",
-                              "content": props.description
-                            },
-                        {
-                              "role": "user",
-                              "content": mensaje
-                        }
-
-                  ]).then((data) => {
-                        if (!data.choices.at(0).message.content) return;
-
-                        $chatMain.innerHTML += MensageLLegada({
-                              mensaje: data.choices.at(0).message.content,
-                              imageUrl: props.imageUrl
-                        })
-                  });
-
-                  $entrada.value = "";
-            })
+      $chatMain.innerHTML += MensageEnviado({
+        mensaje,
       });
 
-      return element;
+      communicateWithOpenAI([
+        {
+          role: "system",
+          content: `Eres la consola de Videojuegos ${props.name}`,
+        },
+        {
+          role: "assistant",
+          content: props.description,
+        },
+        {
+          role: "user",
+          content: mensaje,
+        },
+      ]).then((data) => {
+        if (!data.choices.at(0).message.content) return;
 
+        $chatMain.innerHTML += MensageLLegada({
+          mensaje: data.choices.at(0).message.content,
+          imageUrl: props.imageUrl,
+        });
+      });
+
+      $entrada.value = "";
+    });
+  });
+
+  return element;
 }

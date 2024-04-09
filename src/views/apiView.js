@@ -1,30 +1,36 @@
 import { setApiKey } from "../lib/apiKey.js";
 
-export function apiView(props) {
+export function apiView() {
   const element = document.createElement("div");
   element.classList.add("window_api");
   element.innerHTML = /*html*/ `
-
-    <main id="content-key">
+    <header class="barra-home">
+      <button class="start"><i class="fa-solid fa-house"></i>Inicio</button>
+    </header>
+    <main class="main-content">
+     <section id="content-key">
       <h1>Ingresa tu Api Key</h1>
       <div>
          <img src="../img/mariokey.jpg" alt class="image-key"/>
       </div>
        <section class="buttons_key">
          <input type="text"  class="ingress-key" placeholder="Escribe..."/>
-         <button class="confirm">Confirmar</button>
-         <button class="cancelar">Cancelar</button>
-       </section>
-
+         <button class="confirm" class="button">Confirmar</button>
+         <button class="cancelar" class="button">Cancelar</button>
+      </section>
     </main>
+    </section>
+    <div class="icono_mario"></div>
     <footer class="footer-copy">&copy; By Karen Mora and Wendy Nicol</footer>
     <style>
-      .window_api{
+
+      .main-content {
         display:flex;
-        align-items:center;
         justify-content:center;
+        align-items:center;
         height:100vh;
       }
+
       #content-key{
         border: 3px solid #000;
         border-radius: 20px 0px 20px 0px;
@@ -32,6 +38,13 @@ export function apiView(props) {
         width:50vh;
 
         background:#FBE5B5;
+      }
+      h1{
+        display:flex;
+        font-family: "Black Ops One", system-ui;
+        font-size:3em;
+        justify-content:center;
+
       }
       .buttons_key{
         display:flex;
@@ -43,6 +56,7 @@ export function apiView(props) {
         margin-bottom: 10px;
       }
       button{
+        font-family: "Oswald", sans-serif;
         border-radius:20px;
         width:20vh;
         height:30px;
@@ -53,6 +67,7 @@ export function apiView(props) {
         cursor:pointer;
       }
       .ingress-key{
+        font-family: "Oswald", sans-serif;
         border-radius:20px;
         height:40px;
         font-size:20px;
@@ -66,21 +81,22 @@ export function apiView(props) {
     </style>
   `;
   document.body.style.backgroundColor = "#9CECD4";
-  element.addEventListener("load", ()=> {
+  element.addEventListener("load", () => {
     const buttonCancel = document.querySelector(".cancelar");
     const buttonConfirm = document.querySelector(".confirm");
     const ingressKey = document.querySelector(".ingress-key");
-
-    buttonCancel.addEventListener("click", ()=>{
-       window.location.href= "/";
+    const buttonStart = document.querySelector(".start");
+    buttonStart.addEventListener("click", () => {
+      window.location.href = "/";
     });
-    buttonConfirm.addEventListener("click", ()=>{
+
+    buttonCancel.addEventListener("click", () => {
+      window.location.href = "/";
+    });
+    buttonConfirm.addEventListener("click", () => {
       setApiKey(ingressKey.value);
-      window.location.href ="/";
-    })
-});
-
+      window.location.href = "/";
+    });
+  });
   return element;
-  }
-
-
+}

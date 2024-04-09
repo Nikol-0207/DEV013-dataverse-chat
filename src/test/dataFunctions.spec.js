@@ -4,7 +4,7 @@ import fakeData  from '../data/dataset.js';
 const dataInitial = [...fakeData];
 describe('sortData', () => {
 
-    it('sorts data alfabeticamente en orden ascendete', () => {
+  it('sorts data alfabeticamente en orden ascendete', () => {
     const sortedData = sortData(fakeData, 'name', 'asc');
     const firstItem = sortedData[0];
     const lastItem = sortedData[sortedData.length - 1];
@@ -43,7 +43,7 @@ describe('filterData', () => {
 describe('computeStats', () => {
   it('Calcular total de precios por generación', () => {
     const stats = computeStats(fakeData);
-    
+
     expect(stats['primerageneración']).toBe(199);
     expect(stats['segundageneración']).toBe(40);
   });

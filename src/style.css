@@ -3,16 +3,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 
+.barra-home{
+  width:100%;
+  height:60px;
 
-.container-ingress{
-  background: black;
-  height: 404px;
-  width: 759px;
+  background: #A49E9E;
+  backdrop-filter: blur(1px);
+  display:flex;
+  align-items:center;
+}
+.start{
+ margin-left: 20px;
+  font-family: "Oswald", sans-serif;
+  border-radius:20px;
+  width:102px;
+  height:36px;
+  font-size:20px;
+  cursor:pointer;
+  background: #D9D9D9;
+  color:#000;
+  border: 2px solid rgb(0, 0, 0);
 }
 .container-ingress {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: black;
+  height: 404px;
+  width: 759px;
 }
 .ingress-button{
   background-color: #9CECD4;
@@ -25,6 +43,8 @@
   margin-left: 10px;
   bottom: 0;
   width: 100%;
+  font-size: 20pt;
+  font-family: "Oswald", sans-serif;
 }
 h1[name="header__titulo"] {
   justify-content: center;
@@ -357,7 +377,20 @@ h1[name="header__titulo"] {
   border: 2px solid rgb(0, 0, 0);
   background-color: rgba(248, 238, 238, 0.903);
 }
-
+#button_apikey {
+  font-size: 25px;
+  height: 45px;
+  width: 60px;
+  border-radius: 15px;
+  background-color: rgba(248, 238, 238, 0.903);
+  backdrop-filter: blur(1px);
+  transition: transform 100ms ease-in-out;
+  margin-left:50px;
+}
+#button_apikey:hover{
+  transform: scale(1.1);
+  background: #fff000;
+}
 .contenido-esta{
   background: #f9f9f9;
   width: 64vmin;

@@ -66,9 +66,13 @@ const renderView = (pathname, props = {}) => {
  * @param {{[property: string]: string}} props Represent properties to send to specific view
  */
 export const navigateTo = (pathname, props = {}) => {
+  let updatedPathname= pathname;
+  if (pathname.startsWith("/consola") && props.name) {  //verifica si esta en la vista del chat individual
+    updatedPathname = `${pathname}-${props.id.toLowerCase().replace(/\s+/g, "-")}`; //modifica la url para señalar en que consola
+  }
   const state = props;
-  const title = pathname.replace(/[\/\-]/g, " ").trim() || "Data verso";
-  const url = pathname;
+  const title = updatedPathname.replace(/[/-]/g, " ").trim() || "Data verse";
+  const url = updatedPathname;
   history.pushState(state, title, url);
   renderView(pathname, props);
   document.title = title;
@@ -83,6 +87,5 @@ export const onURLChange = (location) => {
   const props = queryStringToObject(search);
   const pathname = location.pathname || "/";
   navigateTo(pathname, props);
-
 
 };

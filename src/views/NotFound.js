@@ -1,13 +1,15 @@
-export function NotFound(props) {
+export function NotFound() {
   const element = document.createElement("div");
   element.innerHTML = /*html*/ `
       <main>
         <article >
-          <div class="text-baloon"> Lo sentimos, la página que estás buscando no se pudo encontrar. Puede ser que la dirección URL sea incorrecta o que la página haya sido eliminada.</div>
+
+             <div class="text-baloon"> Lo sentimos, la página que estás buscando no se pudo encontrar. Puede ser que la dirección URL sea incorrecta o que la página haya sido eliminada.</div>
+         
           <div class="error-container"> <!--  -->
             <div class="number-container">
               <div class="number">4</div>
-              <button class="kirby-button">
+              <button class="kirby-button" title="Click me">
                 <img src="../img/kirby.png" alt="kirby" class="img-kirby"/>
               </button>
               <div class="number">4</div>
@@ -23,6 +25,7 @@ export function NotFound(props) {
       </aside>
       <footer class="footer-copy">&copy; By Karen Mora and Wendy Nicol</footer>
       <style>
+
       .text-baloon{
       text-align: justify;
       box-shadow: 10px 10px 4px rgba(22, 21, 21, 0.2) ;
@@ -42,14 +45,19 @@ export function NotFound(props) {
      .error-container{
       display:flex;
       flex-direction:column;
+      margin-left:10rem;
 
+      height:50px;
      }
      .number-container{
       display: flex;
       flex-direction: row;
+      justify-content:center;
       align-items: center;
       height:100%;
-      width:100%;
+      width:50%;
+      margin-top:9rem;
+      margin-bottom:5rem;
      }
      .kirby-button{
       border:none;
@@ -67,8 +75,8 @@ export function NotFound(props) {
      }
      .text-error{
         color: #7B6E6E;
-        font-size: 2rem;
-
+        font-size: 6rem;
+        font-family: "Oswald", sans-serif;
     }
 
      .img-content {
@@ -89,11 +97,11 @@ export function NotFound(props) {
       </style>
       `;
   document.body.style.backgroundColor = "#9CECD4";
-    element.addEventListener("load", ()=> {
-        const buttonKirby = document.querySelector(".kirby-button");
-        buttonKirby.addEventListener("click", ()=>{
-           window.location.href= "/";
-        });
+  element.addEventListener("load", () => {
+    const buttonKirby = document.querySelector(".kirby-button");
+    buttonKirby.addEventListener("click", () => {
+      window.location.href = "/";
     });
+  });
   return element;
 }
