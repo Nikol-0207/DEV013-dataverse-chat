@@ -99,7 +99,6 @@ export const renderItems = (data) => {
             <footer class="card-back__footer" >
               <figure class="card-back__footer-image">
                 <img src alt  data-itemprop="imageUrlGame" />
-
               </figure>
             </footer>
           </section>
@@ -211,7 +210,6 @@ export function Home() {
   element.addEventListener("load", () => {
     let currentData = data;
     const $selecType = element.querySelector('[name="type-order"]');
-
     const $selection = document.querySelector("#mySelect");
     const $buscador = element.querySelector("#buscador");
     const $botonBuscar = document.querySelector("#searchName");
@@ -225,18 +223,12 @@ export function Home() {
     const closeBox = document.querySelector(".closeHistogram");
     const buttonStatistics = document.querySelector("#statics");
 
-
-
     $buttonApi.addEventListener("click", () => {
       window.location.href = "/apiview";
     });
 
-
-
     $selection.addEventListener("change", (event) => {
-      const selectorName = document
-        .querySelector("#mySelect")
-        .getAttribute("name");
+      const selectorName = document.querySelector("#mySelect").getAttribute("name");
       const selectedGeneration = event.target.value;
       const filtered = filterData(data, selectorName, selectedGeneration);
       currentData = filtered;

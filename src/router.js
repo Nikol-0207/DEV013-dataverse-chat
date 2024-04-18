@@ -8,7 +8,7 @@ const ROUTES = {};
  * @description This function set root element
  * @param {HTMLElement} $node Represent the root element for the content inside itself
  */
-export const setRoot = ($node) => {
+export const setRoot = ($node) => {   //toma un elemento HTML como argumento 
   $root = $node;
 };
 

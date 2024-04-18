@@ -8,8 +8,7 @@ export const communicateWithOpenAI = (messages) => {
       Authorization: `Bearer ${getApiKey()}`,
     },
     body: JSON.stringify({
-      model: "gpt-3.5-turbo",
-      messages,
+      model: "gpt-3.5-turbo",messages,
     }),
   };
 
